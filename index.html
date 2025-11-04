@@ -2463,7 +2463,7 @@
                 // Sélectionner l'URL du webhook selon le mode
                 const webhookURL = mode === 'test' 
                     ? 'https://n8n.srv1104707.hstgr.cloud/webhook/DictaMed'
-                    : 'https://csvfile.app.n8n.cloud/webhook/DictaMed';
+                    : 'https://n8n.srv1104707.hstgr.cloud/webhook/DictaMedNormalMode';
 
                 const response = await fetch(webhookURL, {
                     method: 'POST',
