@@ -1338,22 +1338,22 @@
                     <span>🏥</span>
                     <span class="tab-text">Mode Normal</span>
                 </button>
-                <button class="tab" onclick="switchTab('test')" title="Mode Test">
-                    <span>🧪</span>
-                    <span class="tab-text">Mode Test</span>
-                    <span class="test-badge">DÉMO</span>
-                </button>
                 <button class="tab" onclick="switchTab('how')" title="Comment ça marche">
                     <span>💡</span>
                     <span class="tab-text">Guide</span>
+                </button>
+                <button class="tab" onclick="switchTab('contact')" title="Nous Contacter">
+                    <span>📧</span>
+                    <span class="tab-text">Contact</span>
                 </button>
                 <button class="tab" onclick="switchTab('faq')" title="FAQ">
                     <span>❓</span>
                     <span class="tab-text">FAQ</span>
                 </button>
-                <button class="tab" onclick="switchTab('contact')" title="Nous Contacter">
-                    <span>📧</span>
-                    <span class="tab-text">Contact</span>
+                <button class="tab" onclick="switchTab('test')" title="Mode Test">
+                    <span>🧪</span>
+                    <span class="tab-text">Mode Test</span>
+                    <span class="test-badge">DÉMO</span>
                 </button>
             </div>
             <div class="tabs-hint">← Faites glisser pour voir plus →</div>
@@ -1443,6 +1443,17 @@
                     <p style="color: #14532d; font-size: 15px; line-height: 1.7; font-style: italic;">
                         Notre plateforme déchiffre automatiquement votre message vocal et remplit un fichier Excel en ligne. Ce fichier sera ensuite transformé en fichier SPSS par notre équipe.
                     </p>
+                    
+                    <!-- Bouton vers Mode Test -->
+                    <div style="text-align: center; margin-top: 25px;">
+                        <button onclick="switchTab('test')" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 15px 35px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s;">
+                            <span style="font-size: 22px;">🧪</span>
+                            <span>Essayer Gratuitement en Mode Test</span>
+                        </button>
+                        <p style="color: #15803d; font-size: 13px; margin-top: 10px; font-weight: 600;">
+                            ⚡ Testez immédiatement sans inscription
+                        </p>
+                    </div>
                 </div>
 
                 <!-- PROCESSUS -->
@@ -1686,47 +1697,61 @@
 
         <!-- TAB CONTACT -->
         <div id="tab-contact" class="tab-content">
-            <div style="max-width: 700px; margin: 0 auto;">
-                <h2 style="color: #333; margin-bottom: 25px; text-align: center; font-size: 28px;">
-                    📧 Contactez-nous
-                </h2>
+            <div style="max-width: 900px; margin: 0 auto;">
                 
-                <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border: 2px solid #2563eb; border-radius: 15px; padding: 30px; margin-bottom: 25px;">
-                    <h3 style="color: #0c4a6e; margin-bottom: 20px; font-size: 22px;">
-                        💼 Commander DictaMed
-                    </h3>
-                    <p style="color: #0c4a6e; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                <!-- Commander DictaMed Section -->
+                <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 100%); border: 2px solid #0ea5e9; border-radius: 15px; padding: 35px; margin-bottom: 30px;">
+                    <h2 style="color: #0c4a6e; font-size: 26px; font-weight: 800; margin: 0 0 15px 0; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 28px;">💼</span> Commander DictaMed
+                    </h2>
+                    <p style="color: #0369a1; font-size: 16px; line-height: 1.7; margin: 0 0 25px 0;">
                         Intéressé par notre solution de dictée médicale intelligente ? Contactez-nous pour obtenir un devis personnalisé adapté à vos besoins.
                     </p>
                     
-                    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                        <p style="color: #0c4a6e; font-size: 18px; margin-bottom: 15px;">
-                            <strong>📧 Email :</strong>
-                        </p>
-                        <a href="mailto:DictaMed.SPSS@gmail.com" style="color: #2563eb; font-size: 20px; font-weight: 600; text-decoration: none; display: block; padding: 12px; background: #f0f9ff; border-radius: 8px; text-align: center;">
+                    <!-- Email Section -->
+                    <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #0c4a6e; font-size: 18px; font-weight: 700; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 20px;">📧</span> Email :
+                        </h3>
+                        <a href="mailto:DictaMed.SPSS@gmail.com" style="display: block; text-align: center; background: #e0f2fe; color: #0369a1; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 17px; transition: all 0.3s;">
                             DictaMed.SPSS@gmail.com
                         </a>
                     </div>
                     
-                    <div style="background: #fef3c7; padding: 20px; border-radius: 10px; border-left: 4px solid #f59e0b;">
-                        <h4 style="color: #78350f; margin-bottom: 12px; font-size: 18px;">
-                            💰 Tarification
-                        </h4>
-                        <p style="color: #78350f; font-size: 15px; line-height: 1.8;">
+                    <!-- Facebook Section -->
+                    <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #0c4a6e; font-size: 18px; font-weight: 700; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1877f2" style="vertical-align: middle;">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Facebook :
+                        </h3>
+                        <a href="https://www.facebook.com/DictaMed.SPSS" target="_blank" style="display: block; text-align: center; background: #e0f2fe; color: #0369a1; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 17px; transition: all 0.3s;">
+                            DictaMed.SPSS
+                        </a>
+                    </div>
+                    
+                    <!-- Tarification Section -->
+                    <div style="background: #fef3c7; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #92400e; font-size: 18px; font-weight: 700; margin: 0 0 15px 0; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 20px;">💰</span> Tarification
+                        </h3>
+                        <p style="color: #78350f; font-size: 15px; line-height: 1.6; margin: 0 0 10px 0;">
                             Notre tarification est flexible et s'adapte à vos besoins :
                         </p>
-                        <ul style="color: #78350f; margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <ul style="color: #78350f; font-size: 15px; line-height: 1.8; margin: 0; padding-left: 20px;">
                             <li><strong>Prix selon le nombre de patients</strong> à traiter.</li>
                             <li><strong>Prix selon le nombre de variables</strong> à recueillir.</li>
                         </ul>
                     </div>
                 </div>
                 
-                <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 15px; padding: 25px;">
-                    <h3 style="color: #334155; margin-bottom: 15px; font-size: 20px;">
-                        📝 Informations à fournir dans votre demande :
-                    </h3>
-                    <ul style="color: #475569; line-height: 2; margin-left: 20px;">
+                <!-- Informations à fournir Section -->
+                <div style="background: white; border: 2px solid #e5e7eb; border-radius: 15px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <h2 style="color: #1f2937; font-size: 22px; font-weight: 800; margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 24px;">📝</span> Informations à fournir dans votre demande :
+                    </h2>
+                    <ul style="color: #4b5563; font-size: 15px; line-height: 2; margin: 0; padding-left: 20px; list-style-type: disc;">
                         <li>Nom et prénom du demandeur.</li>
                         <li>Numéro de téléphone.</li>
                         <li>Nom de votre établissement/structure.</li>
@@ -1735,10 +1760,11 @@
                         <li>Date de démarrage souhaitée.</li>
                     </ul>
                     
-                    <p style="color: #475569; margin-top: 20px; font-style: italic; text-align: center;">
-                        ⏱️ Nous vous répondons sous 48h ouvrées.
+                    <p style="color: #7c3aed; font-size: 16px; font-weight: 600; text-align: center; margin: 25px 0 0 0; font-style: italic; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span style="font-size: 20px;">⏱️</span> Nous vous répondons sous 48h ouvrées.
                     </p>
                 </div>
+                
             </div>
         </div>
 
