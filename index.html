@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DictaMed</title>
+    
+    <!-- Favicon avec D bleu et M vert -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23ffffff'/%3E%3Ctext x='10' y='75' font-family='Arial, sans-serif' font-size='52' font-weight='900' fill='%232563eb' letter-spacing='-2'%3ED%3C/text%3E%3Ctext x='53' y='75' font-family='Arial, sans-serif' font-size='52' font-weight='900' fill='%2310b981' letter-spacing='-2'%3EM%3C/text%3E%3C/svg%3E">
+    
     <style>
         * {
             margin: 0;
@@ -395,6 +399,33 @@
         input[type="text"]::placeholder, input[type="password"]::placeholder {
             color: #94a3b8;
             font-weight: 400;
+        }
+
+        /* Compteur de caractères */
+        .char-counter {
+            font-size: 12px;
+            color: #64748b;
+            text-align: right;
+            margin-top: 4px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .char-counter.warning {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .char-counter.limit {
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        @media (min-width: 768px) {
+            .char-counter {
+                font-size: 13px;
+                margin-top: 5px;
+            }
         }
 
         .sections-container {
@@ -1344,12 +1375,14 @@
 
             <div class="form-group">
                 <label for="patientNumber">📝 Numéro de Dossier Patient *</label>
-                <input type="text" id="patientNumber" placeholder="Ex: 487/2025" required>
+                <input type="text" id="patientNumber" placeholder="Ex: 487/2025" maxlength="50" required oninput="updateCharCount('patientNumber', 50)">
+                <div class="char-counter" id="counter-patientNumber">0/50</div>
             </div>
 
             <div class="form-group">
                 <label for="patientName">👤 Nom et Prénom du Patient *</label>
-                <input type="text" id="patientName" placeholder="Ex: Ben Saleh Kamel" required>
+                <input type="text" id="patientName" placeholder="Ex: Ben Saleh Kamel" maxlength="50" required oninput="updateCharCount('patientName', 50)">
+                <div class="char-counter" id="counter-patientName">0/50</div>
             </div>
 
             <div class="sections-container" id="sections-normal"></div>
@@ -1469,7 +1502,7 @@
                             <h4>Lien Google Sheet personnalisé</h4>
                             <p>Recevez un lien vers votre Google Sheet (Excel en ligne) spécifique à votre thèse/mémoire.</p>
                             <p style="margin-top: 10px; padding: 10px; background: #fef3c7; border-radius: 8px; font-size: 13px; color: #78350f;">
-                                ⚠️ <strong>Important :</strong> L'application Google Sheets doit être installée sur votre téléphone.<br>
+                                ⚠️ <strong>Important :</strong> L'application Google Sheets doit être installée sur votre téléphone pour une meilleure expérience. Si non, vous pouvez ouvrir le lien directement dans votre navigateur.<br>
                                 📱 <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.sheets" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 600;">Télécharger pour Android</a><br>
                                 🍎 <a href="https://apps.apple.com/app/google-sheets/id842849113" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 600;">Télécharger pour iOS</a>
                             </p>
@@ -1648,32 +1681,6 @@
                         <strong>🚀 Résultat final :</strong> Vous recevez un fichier SPSS (.sav) prêt à l'emploi pour vos analyses - plus besoin de manipulations supplémentaires !
                     </p>
                 </div>
-
-                <!-- Bloc Contact rapide -->
-                <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border: 2px solid #2563eb; border-radius: 15px; padding: 30px; margin-top: 30px; text-align: center;">
-                    <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 24px;">
-                        🤔 Vous avez d'autres questions ?
-                    </h3>
-                    <p style="color: #1e3a8a; font-size: 16px; margin-bottom: 20px; line-height: 1.6;">
-                        N'hésitez pas à nous contacter, nous serons ravis de vous aider !
-                    </p>
-                    <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; display: inline-block;">
-                        <p style="color: #1e40af; font-size: 16px; margin-bottom: 8px; font-weight: 600;">
-                            🌐 Site Web
-                        </p>
-                        <a href="http://www.DictaMed.net" target="_blank" style="color: #2563eb; font-size: 20px; font-weight: 700; text-decoration: none;">
-                            www.DictaMed.net
-                        </a>
-                    </div>
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-                        <button onclick="switchTab('test')" style="background: #10b981; color: white; padding: 12px 25px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-                            🧪 Essayer Gratuitement
-                        </button>
-                        <button onclick="switchTab('contact')" style="background: #2563eb; color: white; padding: 12px 25px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-                            📧 Nous Contacter
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1811,25 +1818,13 @@
                         Les données transcrites sont d'abord collectées dans Google Sheets ou Excel. Par la suite, l'équipe DictaMed transforme ces fichiers en format SPSS pour vous permettre d'analyser directement vos données sans manipulation supplémentaire. Vous bénéficiez ainsi d'un fichier prêt à l'emploi pour vos analyses statistiques.
                     </p>
                 </div>
-
-                <div style="background: #e0f2fe; border: 2px solid #2563eb; border-radius: 15px; padding: 25px; margin-top: 30px; text-align: center;">
-                    <h3 style="color: #0c4a6e; margin-bottom: 15px; font-size: 20px;">
-                        🤔 Vous avez d'autres questions ?
-                    </h3>
-                    <p style="color: #0c4a6e; margin-bottom: 15px;">
-                        N'hésitez pas à nous contacter, nous serons ravis de vous aider !
-                    </p>
-                    <a href="mailto:DictaMed.SPSS@gmail.com" style="display: inline-block; background: #2563eb; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">
-                        📧 Contactez-nous
-                    </a>
-                </div>
             </div>
         </div>
 
         <!-- TAB TEST -->
         <div id="tab-test" class="tab-content">
             <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 15px; padding: 20px; margin-bottom: 25px;">
-                <h3 style="color: #92400e; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                <h3 style="color: #92400e; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 700;">
                     <span>💡</span> Consignes d'utilisation - Mode Test
                 </h3>
                 <div style="color: #78350f; line-height: 1.8; font-size: 14px;">
@@ -1869,12 +1864,14 @@
 
             <div class="form-group">
                 <label for="testPatientNumber">📝 Numéro de Dossier Patient *</label>
-                <input type="text" id="testPatientNumber" placeholder="Ex: 478/2024" required>
+                <input type="text" id="testPatientNumber" placeholder="Ex: 478/2024" maxlength="50" required oninput="updateCharCount('testPatientNumber', 50)">
+                <div class="char-counter" id="counter-testPatientNumber">0/50</div>
             </div>
 
             <div class="form-group">
                 <label for="testPatientName">👤 Nom et Prénom du Patient *</label>
-                <input type="text" id="testPatientName" placeholder="Ex: Ben Saleh Kamel" required>
+                <input type="text" id="testPatientName" placeholder="Ex: Ben Saleh Kamel" maxlength="50" required oninput="updateCharCount('testPatientName', 50)">
+                <div class="char-counter" id="counter-testPatientName">0/50</div>
             </div>
 
             <div class="sections-container" id="sections-test"></div>
@@ -2117,6 +2114,9 @@
                 rec.isPaused = false;
                 startTimer(mode, section);
                 
+                // Feedback haptique
+                triggerHapticFeedback(50);
+                
                 // Mettre à jour l'interface - désactiver le bouton enregistrer
                 const recordBtn = document.querySelector(`#section-${mode}-${section} .record-btn`);
                 if (recordBtn) recordBtn.disabled = true;
@@ -2159,6 +2159,9 @@
                 // Arrêter l'enregistrement
                 if (rec.mediaRecorder.state === 'recording' || rec.mediaRecorder.state === 'paused') {
                     rec.mediaRecorder.stop();
+                    
+                    // Feedback haptique
+                    triggerHapticFeedback(30);
                 }
                 
                 // Arrêter le timer
@@ -2232,6 +2235,9 @@
             if (!confirm('Voulez-vous vraiment effacer cet enregistrement ?')) {
                 return;
             }
+            
+            // Feedback haptique
+            triggerHapticFeedback(40);
             
             const rec = recordings[mode][section];
             
@@ -2371,6 +2377,9 @@
         }
 
         async function sendToN8n(mode) {
+            // Feedback haptique
+            triggerHapticFeedback(50);
+            
             let NumeroDeDossier, NomDuPatient, username = null, accessCode = null;
 
             if (mode === 'normal') {
@@ -2504,15 +2513,50 @@
             }, 5000);
         }
 
+        // Fonction de compteur de caractères
+        function updateCharCount(inputId, maxLength) {
+            const input = document.getElementById(inputId);
+            const counter = document.getElementById(`counter-${inputId}`);
+            
+            if (!input || !counter) return;
+            
+            const currentLength = input.value.length;
+            counter.textContent = `${currentLength}/${maxLength}`;
+            
+            // Changer la couleur selon le nombre de caractères
+            counter.classList.remove('warning', 'limit');
+            
+            if (currentLength >= maxLength) {
+                counter.classList.add('limit');
+            } else if (currentLength >= maxLength * 0.8) {
+                counter.classList.add('warning');
+            }
+        }
+
+        // Fonction de feedback haptique (vibration)
+        function triggerHapticFeedback(duration = 50) {
+            if ('vibrate' in navigator) {
+                navigator.vibrate(duration);
+            }
+        }
+
         function resetForm(mode) {
             if (mode === 'normal') {
                 document.getElementById('username').value = '';
                 document.getElementById('accessCode').value = '';
                 document.getElementById('patientNumber').value = '';
                 document.getElementById('patientName').value = '';
+                
+                // Réinitialiser les compteurs
+                updateCharCount('patientNumber', 50);
+                updateCharCount('patientName', 50);
             } else {
                 document.getElementById('testPatientNumber').value = '';
                 document.getElementById('testPatientName').value = '';
+                
+                // Réinitialiser les compteurs
+                updateCharCount('testPatientNumber', 50);
+                updateCharCount('testPatientName', 50);
             }
             
             Object.keys(recordings[mode]).forEach(section => {
@@ -2647,6 +2691,14 @@
             setTimeout(checkScrollPosition, 100);
             setTimeout(checkScrollPosition, 500);
         }
+        
+        // Initialiser les compteurs de caractères
+        ['patientNumber', 'patientName', 'testPatientNumber', 'testPatientName'].forEach(id => {
+            const input = document.getElementById(id);
+            if (input) {
+                updateCharCount(id, 50);
+            }
+        });
         
         // Nettoyer les ressources à la fermeture de la page
         window.addEventListener('beforeunload', () => {
