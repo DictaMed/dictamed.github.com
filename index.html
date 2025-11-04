@@ -2460,7 +2460,12 @@
                     };
                 });
 
-                const response = await fetch('https://csvfile.app.n8n.cloud/webhook/DictaMed', {
+                // Sélectionner l'URL du webhook selon le mode
+                const webhookURL = mode === 'test' 
+                    ? 'https://n8n.srv1104707.hstgr.cloud/webhook/DictaMed'
+                    : 'https://csvfile.app.n8n.cloud/webhook/DictaMed';
+
+                const response = await fetch(webhookURL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
